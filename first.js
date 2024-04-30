@@ -1,10 +1,14 @@
 function setTheme() {
-    const root = document.documentElement;
-    const newTheme = root.className === 'dark' ? 'light' : 'dark';
-    root.className = newTheme;
-    
-    document.querySelector('.theme-name').textContent = newTheme;
-  }
-  
-document.querySelector('.theme-toggle').addEventListener('click', setTheme)
+  const root = document.documentElement
+  const currentTheme = root.classList.contains('dark') ? 'dark' : 'light'
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
 
+  root.classList.remove(currentTheme)
+  root.classList.add(newTheme)
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  setTheme()
+})
+
+document.querySelector('.theme-toggle').addEventListener('click', setTheme)
